@@ -18,7 +18,7 @@ Aabb Leaf::getAabb() const {
 }
 
 void Leaf::addIntoVectorIfIncludeInScope(std::vector<Aabb>& boxes, Camera camera) const {
-	if (!camera.isAabbIncluded(aabb))
+	if (!camera.isCameraInsideBox(aabb))
 		return;
 
 	boxes.push_back(aabb);

@@ -43,7 +43,7 @@ float Node::getCost() const {
 
 void Node::addIntoVectorIfIncludeInScope(std::vector<Aabb>& boxes, Camera camera) const {
 	auto box = getAabb();
-	if (!camera.isAabbIncluded(box))
+	if (!camera.isCameraInsideBox(box))
 		return;
 
 	if (isNotChildrenExist())
