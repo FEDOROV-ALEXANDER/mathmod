@@ -22,6 +22,8 @@ public:
 	std::vector<Point> getTrapezoidPoints() const;
 	bool isCameraInAabb(const Aabb& box) const;
 	bool isCameraInsideBox(Aabb box) const;
-	//bool areCameraAndBoxCross(Aabb box) const;
+	bool areBoxAndCameraCross(Aabb box) const;
+	bool CrossLine(Point point1, Point point2) const;
+
 	
 };

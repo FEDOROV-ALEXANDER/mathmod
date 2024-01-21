@@ -24,7 +24,7 @@ Camera::Camera(float angle,
 	this->coordinates = coordinates;
 }
 std::vector<Point> Camera::getTrapezoidPoints() const {
-	std::vector<Point> points(4);
+	std::vector<Point> points;
 	Point upperpointLeft = Point(nearestDistance, nearestDistance/tan(fov/2));
 	points.push_back(upperpointLeft.moveWithRotate(angle, coordinates.x, coordinates.y));
 	Point upperpointRight = Point(farestDistance, farestDistance / tan(fov / 2));
@@ -61,25 +61,27 @@ bool Camera::isPointIncluded(Point point) const {
 bool Camera::isCameraInsideBox(Aabb box) const {
 	if (isAabbIncluded(box)) return true;
 	if (isCameraInAabb(box)) return true;
+	if (areBoxAndCameraCross(box)) return true;
 	return false;
 }
-//bool Camera::areCameraAndBoxCross(Aabb box) const {
-//	auto points = getTrapezoidPoints();
-//	std::vector<Point> boxPoints;
-//	boxPoints.push_back(box.lowerBound);
-//	boxPoints.push_back(box.upperBound);
-//	boxPoints.push_back(box.getLeftPoint());
-//	boxPoints.push_back(box.getRigthPoint());
-//	for (auto point : points) {
-//		for (Point boxPoint : boxPoints) {
-//			bool isCross;
-//
-//		}
-//	}
-//
-//	bool isCross;
-//	cross(, , , , isCross);
-//
-//	if (isCross)
-//}
+bool Camera::CrossLine(Point point1, Point point2) const {
+	Point point1InCameraCordinates = point1.moveWithRotate(-angle, -coordinates.x, -coordinates.y);
+	Point point2InCameraCordinates = point2.moveWithRotate(-angle, -coordinates.x, -coordinates.y);
+	float a = tan(fov / 2);
+	if ((point1InCameraCordinates.x < nearestDistance) && (point2InCameraCordinates.x < nearestDistance)) return false;
+	if ((point1InCameraCordinates.x > farestDistance) && (point2InCameraCordinates.x > farestDistance	)) return false;
+	if ((a * point1InCameraCordinates.x < point1InCameraCordinates.y) && (a * point2InCameraCordinates.x < point2InCameraCordinates.y)) return false;
+	if ((-a * point1InCameraCordinates.x > point1InCameraCordinates.y) && (-a * point2InCameraCordinates.x > point2InCameraCordinates.y)) return false;
 
+	return true; 
+}
+bool Camera::areBoxAndCameraCross(Aabb box) const {
+	Point leftPoint = box.getLeftPoint();
+	Point rightPoint = box.getRigthPoint();
+	if (CrossLine(box.lowerBound, leftPoint)) return true;
+	if (CrossLine(leftPoint, box.upperBound)) return true;
+	if (CrossLine(box.upperBound, rightPoint)) return true;
+	if (CrossLine(rightPoint, box.lowerBound)) return true; 
+
+	return false;
+}
