@@ -11,6 +11,7 @@ class Tree
 	bool initializeTree(const Aabb&);
 	void addNewNode(TreeElement*, const Aabb&);
 public:
+	~Tree();
 	void addAabb(const Aabb& box);
 
 	float getCost() const;

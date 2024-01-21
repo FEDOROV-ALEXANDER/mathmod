@@ -5,7 +5,7 @@ VisualStudioVersion = 17.4.33205.214
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "mathmod", "mathmod.vcxproj", "{48FC48CD-C384-4B79-AE09-85BA65D3FDEC}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Dynamic BVH AABB tree", "..\Dynamic BVH AABB tree\Dynamic BVH AABB tree.vcxproj", "{1C48AE13-46AF-4B5A-933B-2D7936A7E8D3}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Dynamic BVH AABB tree", "Dynamic BVH AABB tree\Dynamic BVH AABB tree.vcxproj", "{1C48AE13-46AF-4B5A-933B-2D7936A7E8D3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

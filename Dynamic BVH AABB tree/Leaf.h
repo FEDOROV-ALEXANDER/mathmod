@@ -8,7 +8,7 @@ class Leaf : public TreeElement {
 	Aabb aabb;
 public:
 	Leaf(Aabb box, TreeElement* parent = nullptr) /*: TreeElement(parent)*/;
-
+	~Leaf();
 	float getCost() const;
 
 	Aabb getAabb() const;

@@ -5,6 +5,10 @@ Leaf::Leaf(Aabb box, TreeElement* parent) : TreeElement(parent) {
 	aabb = box;
 }
 
+Leaf::~Leaf() {
+
+}
+
 float Leaf::getCost() const {
 	return 0.0;
 }

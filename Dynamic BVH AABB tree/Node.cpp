@@ -11,6 +11,11 @@ Node::Node(TreeElement* left, TreeElement* right, TreeElement* parent): TreeElem
 	setRightChild(right);*/
 }
 
+Node::~Node() {
+	delete left;
+	delete right;
+}
+
 void Node::setLeftChild(TreeElement* newChild) {
 	left = newChild;
 	left->setParent(this);

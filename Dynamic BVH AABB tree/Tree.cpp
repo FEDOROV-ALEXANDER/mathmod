@@ -2,6 +2,10 @@
 #include "Node.h"
 #include<iostream>
 
+Tree::~Tree() {
+	delete root;
+}
+
 void Tree::addAabb(const Aabb& box) {
 	if (initializeTree(box)) return;
 

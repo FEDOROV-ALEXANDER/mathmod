@@ -13,6 +13,7 @@ public:
 	TreeElement* left;
 	TreeElement* right;
 	Node(TreeElement*, TreeElement*, TreeElement* parent = nullptr);
+	~Node();
 	void setLeftChild(TreeElement*);
 	void setRightChild(TreeElement*);
 	Aabb getAabb() const;
